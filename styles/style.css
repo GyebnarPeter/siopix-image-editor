@@ -1,0 +1,22 @@
+img {
+    display: block;
+    max-width: 100%;
+}
+.preview {
+    overflow: hidden;
+    width: 160px; 
+    height: 160px;
+    margin: 10px;
+    border: 1px solid red;
+    display: none !important;
+}
+
+@media screen and (min-width: 768px) {
+    .preview {
+        display: block !important;
+    }
+}
+
+.image {
+    color: rgba(0, 0, 0, 0);
+}
