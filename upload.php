@@ -8,4 +8,11 @@
     $file = $folderPath . uniqid() . '.png';
     file_put_contents($file, $image_base64);
     echo json_encode(["image uploaded successfully."]);
+
+
+    $query = "INSERT INTO image (path) VALUES ('$file')";
+
+    $DB = new Database();
+    $DB->save($query);
+
 ?>
