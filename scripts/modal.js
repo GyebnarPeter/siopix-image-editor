@@ -54,10 +54,14 @@ $("#crop").click(function() {
                 dataType: "json",
                 url: "upload.php",
                 data: {image: base64data},
-                success: function(data) { 
+                success: function(data) {
                     bs_modal.modal('hide');
                     alert("success upload image");
+                },
+                error: function () {
+                    alert("error");
                 }
+
             });
         };
     });
