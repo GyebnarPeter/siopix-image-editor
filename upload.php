@@ -1,4 +1,5 @@
 <?php
+    include 'classes/Database.php';
     $folderPath = 'upload/';
 
     $image_parts = explode(";base64,", $_POST['image']);
