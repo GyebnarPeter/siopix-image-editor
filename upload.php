@@ -1,7 +1,7 @@
 <?php
     include 'classes/Database.php';
-    $folderPath = 'upload/';
 
+    $folderPath = 'upload/';
     $image_parts = explode(";base64,", $_POST['image']);
     $image_type_aux = explode("image/", $image_parts[0]);
     $image_type = $image_type_aux[1];
@@ -10,10 +10,9 @@
     file_put_contents($file, $image_base64);
     echo json_encode(["image uploaded successfully."]);
 
+    setcookie("image", $file, 0, "/");
 
     $query = "INSERT INTO image (path) VALUES ('$file')";
-
     $DB = new Database();
     $DB->save($query);
-
 ?>
