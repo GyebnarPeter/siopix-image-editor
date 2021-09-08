@@ -9,7 +9,6 @@ $("body").on("change", ".image", function(e) {
         bs_modal.modal('show');
     };
 
-
     if (files && files.length > 0) {
         file = files[0];
 
@@ -17,7 +16,7 @@ $("body").on("change", ".image", function(e) {
             done(URL.createObjectURL(file));
         } else if (FileReader) {
             reader = new FileReader();
-            reader.onload = function(e) {
+            reader.onload = function() {
                 done(reader.result);
             };
             reader.readAsDataURL(file);
@@ -48,7 +47,7 @@ $("#crop").click(function() {
         reader.readAsDataURL(blob);
         reader.onloadend = function() {
             var base64data = reader.result;
-
+            
             $.ajax({
                 type: "POST",
                 dataType: "json",
@@ -56,13 +55,12 @@ $("#crop").click(function() {
                 data: {image: base64data},
                 success: function(data) {
                     bs_modal.modal('hide');
-                    alert("success upload image");
                 },
-                error: function () {
-                    alert("error");
+
                 }
 
             });
         };
     });
 });
+

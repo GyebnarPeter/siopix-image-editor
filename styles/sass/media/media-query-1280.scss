@@ -1,0 +1,75 @@
+@media screen and (min-width: 1280px) {
+
+    .header {
+        padding: 30px 50px;
+        position: relative;
+    }
+
+    .nav {
+        position: initial;
+        display: flex;
+        flex-direction: row;
+        min-height: initial;
+        height: 20px;
+        width: initial;
+        background-color: initial;
+        padding: 0;
+        width: initial;
+    }
+
+    .nav-list {
+        display: flex;
+        padding: 0;
+    }
+
+    .nav-item {
+        padding: 0;
+
+        a {
+            color: black;
+            margin-right: 30px;
+            font-weight: 600;
+        }
+        
+        i {
+            display: none;
+        }
+    }
+
+    .header-logo {
+        position: absolute;
+        top: 18px;
+        left: calc(50% - 75px);
+    }
+
+    .user-account {
+        display: flex;
+
+        i {
+            margin-left: 30px;
+        }
+    }
+
+    .nav-close-btn,
+    .nav-open-btn,
+    .nav-user-account,
+    .nav-social {
+        display: none;
+    }
+
+    .sign-in-icon,
+    .sign-up-icon {
+        display: block;
+    }
+
+    .footer-content {
+        display: flex;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-box {
+        flex: 1;
+    }
+
+}
