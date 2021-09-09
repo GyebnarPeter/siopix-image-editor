@@ -1,4 +1,5 @@
 <?php
+//INCLUDED IN HEADER
 class Database
 {
     private $host = "localhost";
