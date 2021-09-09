@@ -1,10 +1,10 @@
 var bs_modal = $('#modal');
 var image = document.getElementById('image');
-var cropper,reader,file;
+var cropper, reader, file;
 
-$("body").on("change", ".image", function(e) {
+$("body").on("change", ".image", function (e) {
     var files = e.target.files;
-    var done = function(url) {
+    var done = function (url) {
         image.src = url;
         bs_modal.modal('show');
     };
@@ -16,7 +16,7 @@ $("body").on("change", ".image", function(e) {
             done(URL.createObjectURL(file));
         } else if (FileReader) {
             reader = new FileReader();
-            reader.onload = function() {
+            reader.onload = function () {
                 done(reader.result);
             };
             reader.readAsDataURL(file);
@@ -24,42 +24,41 @@ $("body").on("change", ".image", function(e) {
     }
 });
 
-bs_modal.on('shown.bs.modal', function() {
+bs_modal.on('shown.bs.modal', function () {
     cropper = new Cropper(image, {
         aspectRatio: 1,
         viewMode: 3,
         preview: '.preview'
     });
-}).on('hidden.bs.modal', function() {
+}).on('hidden.bs.modal', function () {
     cropper.destroy();
     cropper = null;
 });
 
-$("#crop").click(function() {
+$("#crop").click(function () {
     canvas = cropper.getCroppedCanvas({
         width: image.width,
         height: image.height,
     });
 
-    canvas.toBlob(function(blob) {
+    canvas.toBlob(function (blob) {
         url = URL.createObjectURL(blob);
         var reader = new FileReader();
         reader.readAsDataURL(blob);
-        reader.onloadend = function() {
+        reader.onloadend = function () {
             var base64data = reader.result;
-            
+
             $.ajax({
                 type: "POST",
                 dataType: "json",
                 url: "upload.php",
                 data: {image: base64data},
-                success: function(data) {
+                success: function (data) {
                     bs_modal.modal('hide');
                 },
 
-                }
-
             });
+
         };
     });
 });
